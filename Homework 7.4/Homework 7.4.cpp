@@ -2,10 +2,61 @@
 //
 
 #include <iostream>
+#include <string.h>
+#include <string>
+
+char *changeSim(char str[], char sim)
+{
+	str[strlen(str) - 1] = sim;
+	str[0] = sim;
+	return str;
+}
+
+char *deleteSpace(char str[]) 
+{
+	int i = 0, j;
+	while ((str[i] == ' ') || (str[i] == '\t'))
+	{
+		i++;
+	}
+	if (i > 0)
+	{
+		for (j = 0; j < strlen(str); j++)
+		{
+			str[j] = str[j + i];
+		}
+		str[j] = '\0';
+	}
+	i = strlen(str) - 1;
+	while ((str[i] == ' ') || (str[i] == '\t'))
+	{
+		i--;
+	}
+	if (i < (strlen(str) - 1))
+	{
+		str[i + 1] = '\0';
+	}
+	return str;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	std::cout << "Task 1.\n";
+	std::cout << "Enter string.\n";
+	char str[100];
+	std::cin >> str;
+	char sim;
+	std::cout << "Enter simbol.\n";
+	std::cin >> sim;
+	changeSim(str, sim);
+	std::cout << str;
+
+	std::cout << "\n\nTask 2.\n";
+	std::cout << "Enter string.\n";
+	char str2[100] = "      Hello world para-pa-pa!     ";
+	std::cout << "Before:\n"<< str2 << "\n After: \n";
+	std::cout << deleteSpace(str2);
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
