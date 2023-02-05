@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string.h>
-#include <string>
 
 char *changeSim(char str[], char sim)
 {
